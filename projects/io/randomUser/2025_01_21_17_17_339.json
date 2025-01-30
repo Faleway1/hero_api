@@ -1,0 +1,56 @@
+{
+  "gender": "male",
+  "name": {
+    "title": "Mr",
+    "first": "Acílio",
+    "last": "Rezende"
+  },
+  "location": {
+    "street": {
+      "number": 8893,
+      "name": "Rua São Pedro "
+    },
+    "city": "Maracanaú",
+    "state": "Mato Grosso",
+    "country": "Brazil",
+    "postcode": 96977,
+    "coordinates": {
+      "latitude": "-76.7503",
+      "longitude": "-13.8051"
+    },
+    "timezone": {
+      "offset": "-11:00",
+      "description": "Midway Island, Samoa"
+    }
+  },
+  "email": "acilio.rezende@example.com",
+  "login": {
+    "uuid": "0d0ec86f-e689-4c19-835a-ac0354ce1ab3",
+    "username": "goldenostrich686",
+    "password": "citroen",
+    "salt": "6yHLVeKq",
+    "md5": "7170e1a3445971c41a18b87154d4f48e",
+    "sha1": "a0369042923e31d85fd310de12d3b33b5d32e6c3",
+    "sha256": "f2485e674fbd6cf9affae434d16890c5da9fc2e9e2652db5f0e5fa9d05f8e0f7"
+  },
+  "dob": {
+    "date": "1989-10-02T07:12:33.485Z",
+    "age": 35
+  },
+  "registered": {
+    "date": "2002-12-16T02:26:53.094Z",
+    "age": 22
+  },
+  "phone": "(32) 7906-7268",
+  "cell": "(61) 4143-9098",
+  "id": {
+    "name": "CPF",
+    "value": "960.887.578-51"
+  },
+  "picture": {
+    "large": "https://randomuser.me/api/portraits/men/19.jpg",
+    "medium": "https://randomuser.me/api/portraits/med/men/19.jpg",
+    "thumbnail": "https://randomuser.me/api/portraits/thumb/men/19.jpg"
+  },
+  "nat": "BR"
+}

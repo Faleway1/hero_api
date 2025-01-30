@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./styles.css">
+    <link rel="icon" href="data:;base64,iVBORw0KGgo=" />
+  </head>
+  <body>
+    <img src="./img/img1.png" style="width: 150px; border-radius: 20px;" alt="">
+    <h1>Bureau d'enregistrement des Héros</h1>
+    <form action="/new-hero" method="post">
+      <input
+        type="text"
+        name="alias"
+        id="alias"
+        placeholder="Nom du héros"
+        required />
+      <input
+        type="password"
+        name="identity"
+        id="identity"
+        placeholder="Alias du héros"
+        required />
+      <button>Enregistrer</button>
+    </form>
+
+    <ul id="heroes-list"></ul>
+  </body>
+</html>

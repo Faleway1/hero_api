@@ -1,0 +1,56 @@
+{
+  "gender": "male",
+  "name": {
+    "title": "Mr",
+    "first": "Ryan",
+    "last": "Duval"
+  },
+  "location": {
+    "street": {
+      "number": 4542,
+      "name": "Rue du Château"
+    },
+    "city": "Saint-Étienne",
+    "state": "Guyane",
+    "country": "France",
+    "postcode": 41225,
+    "coordinates": {
+      "latitude": "-18.3812",
+      "longitude": "-5.4941"
+    },
+    "timezone": {
+      "offset": "+2:00",
+      "description": "Kaliningrad, South Africa"
+    }
+  },
+  "email": "ryan.duval@example.com",
+  "login": {
+    "uuid": "d487cd55-8eb2-47ac-8e26-60371d6f41b5",
+    "username": "blackgorilla444",
+    "password": "therock",
+    "salt": "G6SlCOVI",
+    "md5": "da6280f751c3df3ebb12a75ab9dda1e3",
+    "sha1": "31caecbc15b85e241fcb3029261c61fc3ce2210f",
+    "sha256": "c480990bcd5b24f6cad32ffd052e3963ecfb9c8cac14831a591bd73ebbb2eb07"
+  },
+  "dob": {
+    "date": "1945-08-05T01:06:05.704Z",
+    "age": 79
+  },
+  "registered": {
+    "date": "2006-03-10T11:41:59.293Z",
+    "age": 18
+  },
+  "phone": "01-84-93-07-36",
+  "cell": "06-83-54-69-47",
+  "id": {
+    "name": "INSEE",
+    "value": "1450732243758 03"
+  },
+  "picture": {
+    "large": "https://randomuser.me/api/portraits/men/46.jpg",
+    "medium": "https://randomuser.me/api/portraits/med/men/46.jpg",
+    "thumbnail": "https://randomuser.me/api/portraits/thumb/men/46.jpg"
+  },
+  "nat": "FR"
+}

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="icon" href="data:;base64,iVBORw0KGgo=" />
+  </head>
+  <body>
+    <h1>Bureau d'enregistrement des Héros</h1>
+    <form action="" method="post">
+      <input
+        type="text"
+        name="hero-name"
+        id="hero-name"
+        placeholder="Nom du héros"
+        required />
+      <button>Enregistrer</button>
+    </form>
+
+    <ul id="heroes-list"></ul>
+
+    <script>
+      const heroes = [];
+      const heroesList = document.querySelector("#heroes-list");
+      const form = document.querySelector("form");
+
+      form.addEventListener("submit", (event) => {
+        event.preventDefault();
+
+        const name = document.querySelector("#hero-name");
+        heroes.push(name.value);
+
+        localStorage.setItem("heroes", JSON.stringify(heroes))
+
+        const li = document.createElement("li");
+        li.textContent = name.value;
+        heroesList.appendChild(li);
+
+        form.reset();
+      });
+
+      window.addEventListener("load", () => {
+        console.log("Page chargée.");
+        
+        const savedHeroes = JSON.parse(localStorage.getItem("heroes")) || [];
+        savedHeroes.forEach((hero) => {
+          heroes.push(hero);
+
+          const li = document.createElement("li");
+          li.textContent = hero;
+          heroesList.appendChild(li);
+        });
+      });
+      
+    </script>
+  </body>
+</html>

@@ -1,0 +1,56 @@
+{
+  "gender": "male",
+  "name": {
+    "title": "Mr",
+    "first": "Finn",
+    "last": "Hughes"
+  },
+  "location": {
+    "street": {
+      "number": 6461,
+      "name": "Prince Albert Road"
+    },
+    "city": "Lower Hutt",
+    "state": "Manawatu-Wanganui",
+    "country": "New Zealand",
+    "postcode": 48115,
+    "coordinates": {
+      "latitude": "55.3677",
+      "longitude": "-171.7729"
+    },
+    "timezone": {
+      "offset": "+4:30",
+      "description": "Kabul"
+    }
+  },
+  "email": "finn.hughes@example.com",
+  "login": {
+    "uuid": "54aab656-37ce-4f8c-82bb-b6e906fff7b8",
+    "username": "sadpanda766",
+    "password": "buffet",
+    "salt": "mDU48FWq",
+    "md5": "4c02591491a67732d4ea58b18f4f2d93",
+    "sha1": "9cd35a4e8536ac33b04c4032fd7156f58b8cc538",
+    "sha256": "6d04c3386e2688be95c41592c600fe3c4657f6469a0d38221b4c05b053d90e72"
+  },
+  "dob": {
+    "date": "1968-08-22T10:53:12.073Z",
+    "age": 56
+  },
+  "registered": {
+    "date": "2019-12-26T00:28:24.647Z",
+    "age": 5
+  },
+  "phone": "(039)-994-7527",
+  "cell": "(844)-771-4802",
+  "id": {
+    "name": "",
+    "value": null
+  },
+  "picture": {
+    "large": "https://randomuser.me/api/portraits/men/58.jpg",
+    "medium": "https://randomuser.me/api/portraits/med/men/58.jpg",
+    "thumbnail": "https://randomuser.me/api/portraits/thumb/men/58.jpg"
+  },
+  "nat": "NZ"
+}

@@ -1,0 +1,56 @@
+{
+  "gender": "male",
+  "name": {
+    "title": "Mr",
+    "first": "Logan",
+    "last": "Gagnon"
+  },
+  "location": {
+    "street": {
+      "number": 5080,
+      "name": "Grand Ave"
+    },
+    "city": "Princeton",
+    "state": "New Brunswick",
+    "country": "Canada",
+    "postcode": "P9S 5L2",
+    "coordinates": {
+      "latitude": "-67.5452",
+      "longitude": "-114.2581"
+    },
+    "timezone": {
+      "offset": "-9:00",
+      "description": "Alaska"
+    }
+  },
+  "email": "logan.gagnon@example.com",
+  "login": {
+    "uuid": "85188a42-5963-4149-951b-37c2008cd173",
+    "username": "bigpanda292",
+    "password": "fmale",
+    "salt": "uLznhsKf",
+    "md5": "2b9b911f23f4f30bb0c9ee47c92ed9e2",
+    "sha1": "1613bc2c8a87347e47fdfae97f9fbf2e031a8353",
+    "sha256": "e8fd1e645abc4b49b349be092f00583308eb6e6e1866a03798c363c00af03562"
+  },
+  "dob": {
+    "date": "1972-05-03T22:50:39.565Z",
+    "age": 52
+  },
+  "registered": {
+    "date": "2018-08-08T11:50:47.054Z",
+    "age": 6
+  },
+  "phone": "B05 U80-4202",
+  "cell": "O15 Y45-1441",
+  "id": {
+    "name": "SIN",
+    "value": "532275344"
+  },
+  "picture": {
+    "large": "https://randomuser.me/api/portraits/men/14.jpg",
+    "medium": "https://randomuser.me/api/portraits/med/men/14.jpg",
+    "thumbnail": "https://randomuser.me/api/portraits/thumb/men/14.jpg"
+  },
+  "nat": "CA"
+}
