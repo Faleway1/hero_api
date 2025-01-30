@@ -1,25 +1,36 @@
 import sequelize from "../config/database.js";
 import { DataTypes } from "sequelize";
+import Hero from "./hero.model.js";
 
-const Hero = sequelize.define(
-  "heroes",
+
+const Mission = sequelize.define(
+  "missions",
   {
     id: {
       primaryKey: true,
       type: DataTypes.INTEGER,
       autoIncrement: true,
     },
-    alias: {
+    missionName: {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    identity: {
+    missionDesc: {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    powerDate: {
+    missionDifficulty: {
       type: DataTypes.STRING,
       allowNull: false,
+    },
+    id_hero: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      references: {
+        model: Hero,
+        key: "id",
+      },
+      onDelete: "CASCADE",
     },
     isDeleted: {
       type: DataTypes.BOOLEAN,
@@ -44,4 +55,7 @@ const Hero = sequelize.define(
   }
 );
 
-export default Hero;
+Hero.hasMany(Mission, { foreignKey: "id_hero" }); 
+Mission.belongsTo(Hero, { foreignKey: "id_hero" });
+
+export default Mission;
