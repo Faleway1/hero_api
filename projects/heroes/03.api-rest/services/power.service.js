@@ -14,32 +14,33 @@ import {
   
     return {
       id: power.id,
-      alias: power.alias,
-      powerDate: power.powerDate.slice(-4),
+      powerName: power.powerName,
+      powerDesc: power.powerDesc,
+      id_hero: power.id_hero
     };
   }
   
-  export async function createPower({ alias, identity, powerDate }) {
-    if (!alias || alias.length < 3 || !/^[a-zA-Z ]+$/.test(alias)) {
-      throw new BadRequestError("Alias non valide (3 caractères min, etc.)");
+  export async function createPower({ powerName, powerDesc, id_hero }) {
+    if (!powerName || powerName.length < 3 || !/^[a-zA-Z ]+$/.test(powerName)) {
+      throw new BadRequestError("power non valide (3 caractères min, etc.)");
     }
   
-    if (await PowerRepository.PowerExists(alias)) {
-      throw new ConflictError("Le pouvoir existe déjà (alias).");
+    if (await PowerRepository.PowerExists(powerName)) {
+      throw new ConflictError("Le pouvoir existe déjà (powerName).");
     }
   
-    const power = await PowerRepository.createPower({ alias, identity, powerDate });
+    const power = await PowerRepository.createPower({ powerName, powerDesc, id_hero });
   
     return power.dataValues;
   }
   
-  export async function updatePower(id, { alias, identity, powerDate }) {
-    if (!alias || alias.length < 3 || !/^[a-zA-Z ]+$/.test(alias)) {
-      throw new BadRequestError("Alias non valide (3 caractères min, etc.)");
+  export async function updatePower(id, { powerName, powerDesc, id_hero }) {
+    if (!powerName || powerName.length < 3 || !/^[a-zA-Z ]+$/.test(powerName)) {
+      throw new BadRequestError("Nom du pouvoir non valide (3 caractères min, etc.)");
     }
   
-    if (await PowerRepository.PowerExists(alias)) {
-      throw new ConflictError("Le pouvoir existe déjà (alias).");
+    if (await PowerRepository.PowerExists(powerName)) {
+      throw new ConflictError("Le pouvoir existe déjà (power).");
     }
   
     if (!await PowerRepository.getPowerById(id)) {
@@ -47,34 +48,35 @@ import {
     }
   
     const power = await PowerRepository.updatePower(id, {
-      alias,
-      identity,
-      powerDate,
+      powerName,
+      powerDesc,
+      id_hero,
     });
   
     return power.dataValues;
   }
   
   export async function deletePower(id) {
-    if (!(await getpowerById(id))) {
+    if (!(await getPowerById(id))) {
       throw new NotFoundError("Le pouvoir n'existe pas.");
     }
   
-    return await PowerRepository.deletepower(id);
+    return await PowerRepository.deletePower(id);
   }
   
   export async function getAllPowers() {
-    const poweres = await PowerRepository.getAllPowers();
+    const powers = await PowerRepository.getAllPowers();
   
-    const formattedpoweres = poweres.map((power) => {
+    const formattedpowers = powers.map((power) => {
       return {
         id: power.id,
-        alias: power.alias,
-        powerDate: power.powerDate.slice(-4),
+        powerName: power.powerName,
+        powerDesc: power.powerDesc,
+        id_hero: power.id_hero
       };
     });
   
-    return formattedpoweres;
+    return formattedpowers;
   }
   
   export async function restoredPower(id) {
@@ -86,8 +88,8 @@ import {
       );
     }
   
-    if (await PowerRepository.PowerExists(restoredpower.alias)) {
-      throw new ConflictError("L'alias existe déjà. Le pouvoir ne peut pas être restauré.")
+    if (await PowerRepository.powerExists(restoredpower.powerName)) {
+      throw new ConflictError("Le pouvoir existe déjà. Le pouvoir ne peut pas être restauré.")
     }
   
     return restoredpower;
