@@ -45,12 +45,12 @@ export async function getAllMission() {
   return await Mission.findAll();
 }
 
-export async function MissionExists(missionName) {
+export async function missionExists(missionName) {
   const Mission = await Mission.findOne({ where: { missionName } });
   return Boolean(Mission);
 }
 
-export async function MissionDeletedExists(missionName) {
+export async function missionDeletedExists(missionName) {
   const Mission = await Mission.scope("deleted").findOne({ where: { missionName } });
   return Boolean(Mission);
 }
