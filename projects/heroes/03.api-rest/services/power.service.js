@@ -25,7 +25,7 @@ import {
       throw new BadRequestError("power non valide (3 caractères min, etc.)");
     }
   
-    if (await PowerRepository.PowerExists(powerName)) {
+    if (await PowerRepository.powerExists(powerName)) {
       throw new ConflictError("Le pouvoir existe déjà (powerName).");
     }
   

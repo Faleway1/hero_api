@@ -1,7 +1,8 @@
 import cors from "cors";
 import sequelize from "./config/database.js";
 import express from "express";
-import router from "./routers/hero.router.js";
+import heroRouter from "./routers/hero.router.js";
+import powerRouter from "./routers/power.router.js";
 import { logMiddleware } from "./middlewares/log.middleware.js";
 
 import { initializeHeroMock } from "./services/mock.service.js";
@@ -18,7 +19,8 @@ app.use(cors())
 app.use(express.json());
 app.use(logMiddleware);
 
-app.use("/api/v1/heroes/", router);
+app.use("/api/v1/heroes/", heroRouter);
+app.use("/api/v1/powers/", powerRouter);
 
 app.use(errorHandler)
 
