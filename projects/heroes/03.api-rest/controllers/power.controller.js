@@ -12,8 +12,8 @@ export async function getAllPowers(req, res, next) {
 export async function getPowerById(req, res, next) {
   try {
     const id = req.params.id;
-    const hero = await PowerService.getPowerById(id);
-    res.json(hero);
+    const power = await PowerService.getPowerById(id);
+    res.json(power);
   } catch (error) {
     next(error)
   }
