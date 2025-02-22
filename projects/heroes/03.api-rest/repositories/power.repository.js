@@ -45,13 +45,13 @@ export async function getPowerById(id) {
     return await Power.findAll();
   }
   
-  export async function powerExists(alias) {
-    const power = await Power.findOne({ where: { alias } });
+  export async function powerExists(powerName) {
+    const power = await Power.findOne({ where: { powerName } });
     return Boolean(power);
   }
   
-  export async function powerDeletedExists(alias) {
-    const power = await Power.scope("deleted").findOne({ where: { alias } });
+  export async function powerDeletedExists(powerName) {
+    const power = await Power.scope("deleted").findOne({ where: { powerName } });
     return Boolean(power);
   }
   
