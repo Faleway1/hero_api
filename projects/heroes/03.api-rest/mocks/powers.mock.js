@@ -1,11 +1,11 @@
 export const powersMocks = [
       {
-        powerName: "pouvoir1",
+        powerName: "pouvoirun",
         powerDesc: "est un superpouvoir",
         id_hero: 1
       },
       {
-        powerName: "pouvoir2",
+        powerName: "pouvoirdeux",
         powerDesc: "c'est un autre superpouvoir",
         id_hero: 2
       }
