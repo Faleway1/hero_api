@@ -1,12 +1,12 @@
 import Mission from "../models/mission.model.js";
 
 export async function createMission({ missionName, missionDesc, missionDifficulty, id_hero }) {
-  const mission = await mission.create({ missionName, missionDesc, missionDifficulty, id_hero });
+  const mission = await Mission.create({ missionName, missionDesc, missionDifficulty, id_hero });
   return mission;
 }
 
 export async function getMissionById(id) {
-  const mission = await mission.findByPk(id);
+  const mission = await Mission.findByPk(id);
   if (!mission) {
     return null;
   }
@@ -15,7 +15,7 @@ export async function getMissionById(id) {
 }
 
 export async function getDeletedMissionById(id) {
-  const mission = await mission.scope("deleted").findByPk(id);
+  const mission = await Mission.scope("deleted").findByPk(id);
   if (!mission) {
     return null;
   }
@@ -42,16 +42,16 @@ export async function deleteMission(id) {
 }
 
 export async function getAllMission() {
-  return await mission.findAll();
+  return await Mission.findAll();
 }
 
 export async function missionExists(missionName) {
-  const mission = await mission.findOne({ where: { missionName } });
+  const mission = await Mission.findOne({ where: { missionName } });
   return Boolean(mission);
 }
 
 export async function missionDeletedExists(missionName) {
-  const mission = await mission.scope("deleted").findOne({ where: { missionName } });
+  const mission = await Mission.scope("deleted").findOne({ where: { missionName } });
   return Boolean(mission);
 }
 
