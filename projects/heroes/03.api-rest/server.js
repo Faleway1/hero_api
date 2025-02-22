@@ -21,6 +21,7 @@ app.use(logMiddleware);
 
 app.use("/api/v1/heroes/", heroRouter);
 app.use("/api/v1/powers/", powerRouter);
+app.use("/api/v1/missions/", powerRouter);
 
 app.use(errorHandler)
 
