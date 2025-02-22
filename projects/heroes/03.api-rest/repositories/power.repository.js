@@ -42,13 +42,7 @@ export async function getPowerById(id) {
   }
   
   export async function getAllPowers() {
-    return await Power.findAll({
-      include: [{
-        model: Hero,
-        as: "heroes",
-        required: false
-      }]
-    });
+    return await Power.findAll();
   }
   
   export async function powerExists(powerName) {

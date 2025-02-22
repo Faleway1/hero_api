@@ -42,13 +42,7 @@ export async function deleteMission(id) {
 }
 
 export async function getAllMission() {
-  return await Mission.findAll({
-    include: [{
-      model: Hero,
-      as: "heroes",
-      required: false,
-    }]
-  });
+  return await Mission.findAll();
 }
 
 export async function missionExists(missionName) {
