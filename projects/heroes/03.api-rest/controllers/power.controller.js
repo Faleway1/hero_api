@@ -1,4 +1,4 @@
-import { PowerService } from "../services/power.service.js";
+import { PowerService } from "../services/index.service.js";
 
 export async function getAllPowers(req, res, next) {
   try {
