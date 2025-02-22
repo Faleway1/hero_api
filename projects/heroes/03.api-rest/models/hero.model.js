@@ -1,5 +1,7 @@
 import sequelize from "../config/database.js";
 import { DataTypes } from "sequelize";
+import Mission from "./mission.model.js"
+import Power from "./power.model.js"
 
 const Hero = sequelize.define(
   "heroes",
@@ -43,5 +45,30 @@ const Hero = sequelize.define(
     },
   }
 );
+
+Power.belongsToMany(Hero, {
+  through: 'HeroPower',
+  foreignKey: 'powerId',
+  as: 'hero',
+  onDelete: 'CASCADE'
+});
+Mission.belongsToMany(Hero, {
+  through: 'HeroMission',
+  foreignKey: 'missionId',
+  as: 'hero',
+  onDelete: 'CASCADE'
+});
+Hero.belongsToMany(Power, {
+  through: 'HeroPower',
+  foreignKey: 'heroId',
+  as: 'powers',
+  onDelete: 'CASCADE'
+});
+Hero.belongsToMany(Mission, {
+  through: 'HeroMission',
+  foreignKey: 'heroId',
+  as: 'missions',
+  onDelete: 'CASCADE'
+});
 
 export default Hero;
