@@ -1,6 +1,5 @@
 import sequelize from "../config/database.js";
 import { DataTypes } from "sequelize";
-import Hero from "./hero.model.js";
 
 
 const Mission = sequelize.define(
@@ -54,8 +53,5 @@ const Mission = sequelize.define(
     },
   }
 );
-
-Hero.hasMany(Mission, { foreignKey: "id_hero" }); 
-Mission.belongsTo(Hero, { foreignKey: "id_hero" });
 
 export default Mission;
