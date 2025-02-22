@@ -1,58 +1,58 @@
 import Mission from "../models/mission.model.js";
 
 export async function createMission({ missionName, missionDesc, missionDifficulty, id_hero }) {
-  const Mission = await Mission.create({ missionName, missionDesc, missionDifficulty, id_hero });
-  return Mission;
+  const mission = await mission.create({ missionName, missionDesc, missionDifficulty, id_hero });
+  return mission;
 }
 
 export async function getMissionById(id) {
-  const Mission = await Mission.findByPk(id);
-  if (!Mission) {
+  const mission = await mission.findByPk(id);
+  if (!mission) {
     return null;
   }
 
-  return Mission;
+  return mission;
 }
 
 export async function getDeletedMissionById(id) {
-  const Mission = await Mission.scope("deleted").findByPk(id);
-  if (!Mission) {
+  const mission = await mission.scope("deleted").findByPk(id);
+  if (!mission) {
     return null;
   }
 
-  return Mission;
+  return mission;
 }
 
 export async function updateMission(id, values) {
-  const Mission = await getMissionById(id);
-  if (!Mission) {
+  const mission = await getMissionById(id);
+  if (!mission) {
     return null;
   }
 
-  return await Mission.update(values);
+  return await mission.update(values);
 }
 
 export async function deleteMission(id) {
-  const Mission = await getMissionById(id);
-  if (!Mission) {
+  const mission = await getMissionById(id);
+  if (!mission) {
     return null;
   }
 
-  return await updateMission(Mission.id, { isDeleted: true });
+  return await updateMission(mission.id, { isDeleted: true });
 }
 
 export async function getAllMission() {
-  return await Mission.findAll();
+  return await mission.findAll();
 }
 
 export async function missionExists(missionName) {
-  const Mission = await Mission.findOne({ where: { missionName } });
-  return Boolean(Mission);
+  const mission = await mission.findOne({ where: { missionName } });
+  return Boolean(mission);
 }
 
 export async function missionDeletedExists(missionName) {
-  const Mission = await Mission.scope("deleted").findOne({ where: { missionName } });
-  return Boolean(Mission);
+  const mission = await mission.scope("deleted").findOne({ where: { missionName } });
+  return Boolean(mission);
 }
 
 export async function getAllMissionsWithDeleted() {
