@@ -5,13 +5,15 @@ import heroRouter from "./routers/hero.router.js";
 import powerRouter from "./routers/power.router.js";
 import { logMiddleware } from "./middlewares/log.middleware.js";
 
-import { initializeHeroMock } from "./services/mock.service.js";
+import { initializeHeroMock } from "./services/hero.mock.service.js";
+import { initializePowerMock } from "./services/power.mock.service.js";
 import { errorHandler } from "./middlewares/error.middleware.js";
 
 await sequelize.sync({ force: true });
 console.log("Base de donnée synchronisée !");
 
 await initializeHeroMock();
+await initializePowerMock();
 
 const app = express();
 

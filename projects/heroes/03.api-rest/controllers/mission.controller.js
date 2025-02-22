@@ -1,4 +1,4 @@
-import { MissionService } from "../services/mission.service.js";
+import { MissionService } from "../services/index.service.js";
 
 export async function getAllMission(req, res, next) {
   try {
