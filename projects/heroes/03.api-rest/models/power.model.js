@@ -1,5 +1,6 @@
 import sequelize from "../config/database.js";
 import { DataTypes } from "sequelize";
+import Hero from "./hero.model.js"
 
 
 const Power = sequelize.define(
@@ -49,5 +50,8 @@ const Power = sequelize.define(
     },
   }
 );
+
+Hero.hasMany(Power, {foreignKey: "id_hero" });
+Power.belongsTo(Hero, {foreignKey: "id_hero" })
 
 export default Power;
