@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="icon" href="data:;base64,iVBORw0KGgo=" />
+  </head>
+  <body>
+    <nav class="navigation" style="display: flex; flex-direction: row;">
+        <div style="padding-right: 5vw;">
+            <a href="./index.html">Index</a>
+        </div>
+        <div style="padding-right: 5vw;">
+            <a href="./powers.html">Powers</a>
+        </div>
+        <div style="padding-right: 5vw;">
+            <a href="./mission.html">Missions</a>
+        </div>
+    </nav>
+    <div>
+        <h2>Liste des Powers</h2>
+        <ul class="power_list"></ul>
+    </div>
+    <div>
+        <form action="" method="POST" class="power_form">
+            <input type="text" name="powerName" placeholder="Nom du pouvoir" required>
+            <input type="text" name="powerDesc" placeholder="Description du pouvoir" required>
+            <input type="text" name="id_hero" placeholder="id du hero" required>
+            <button type="submit" class="form_submit">Enregistrer</button>
+        </form>
+    </div>
+    <script type="module">
+        const ul = document.querySelector(".power_list");
+        const form = document.querySelector(".power_form");
+  
+        async function fetchPowers() {
+          try {
+            const res = await fetch("http://127.0.0.1:3000/api/v1/powers/");
+            const data = await res.json();
+            
+            ul.innerHTML = "";
+            data.forEach((element) => {
+              const li = document.createElement("li");
+              li.textContent = element.powerName +"///"+ element.powerDesc;
+              ul.appendChild(li);
+            });
+          } catch (error) {
+            console.error("Error fetching heroes:", error);
+          }
+        }
+  
+        fetchPowers(); 
+  
+        
+        form.addEventListener("submit", async (event) => {
+          event.preventDefault(); 
+  
+          const formData = new FormData(form);
+          const power = {
+            powerName: formData.get("powerName"),
+            powerDesc: formData.get("powerDesc"),
+            id_hero: formData.get("id_hero"),
+          };
+  
+          try {
+            const res = await fetch("http://127.0.0.1:3000/api/v1/powers/", {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify(power),
+            });
+  
+            if (!res.ok) {
+              throw new Error("Failed to add power");
+            }
+  
+            form.reset();
+            fetchPowers();
+          } catch (error) {
+            console.error("Error submitting power:", error);
+          }
+        });
+      </script>
+  </body>
+</html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="icon" href="data:;base64,iVBORw0KGgo=" />
+  </head>
+  <body>
+    <nav class="navigation" style="display: flex; flex-direction: row;">
+        <div style="padding-right: 5vw;">
+            <a href="./index.html">Index</a>
+        </div>
+        <div style="padding-right: 5vw;">
+            <a href="./powers.html">Powers</a>
+        </div>
+        <div style="padding-right: 5vw;">
+            <a href="./mission.html">Missions</a>
+        </div>
+    </nav>
+    <div>
+        <h2>Liste des Heros</h2>
+        <ul class="hero_list"></ul>
+    </div>
+    <div>
+        <form action="" method="POST" class="hero_form">
+            <input type="text" name="alias" placeholder="Nom du Héros" required>
+            <input type="password" name="identity" placeholder="Identité du Héros" required>
+            <input type="date" name="powerDate" placeholder="date du Héros" required>
+            <button type="submit" class="form_submit">Enregistrer</button>
+        </form>
+    </div>
+    <script type="module">
+        const ul = document.querySelector(".hero_list");
+        const form = document.querySelector(".hero_form");
+  
+        async function fetchHeroes() {
+          try {
+            const res = await fetch("http://127.0.0.1:3000/api/v1/heroes/");
+            const data = await res.json();
+  
+            ul.innerHTML = "";
+            data.forEach((element) => {
+              const li = document.createElement("li");
+              li.textContent = element.alias;
+              ul.appendChild(li);
+            });
+          } catch (error) {
+            console.error("Error fetching heroes:", error);
+          }
+        }
+  
+        fetchHeroes(); 
+  
+        
+        form.addEventListener("submit", async (event) => {
+          event.preventDefault(); 
+  
+          const formData = new FormData(form);
+          const hero = {
+            alias: formData.get("alias"),
+            identity: formData.get("identity"),
+            powerDate: formData.get("powerDate"),
+          };
+  
+          try {
+            const res = await fetch("http://127.0.0.1:3000/api/v1/heroes/", {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify(hero),
+            });
+  
+            if (!res.ok) {
+              throw new Error("Failed to add hero");
+            }
+  
+            form.reset();
+            fetchHeroes();
+          } catch (error) {
+            console.error("Error submitting hero:", error);
+          }
+        });
+      </script>
+  </body>
+</html>

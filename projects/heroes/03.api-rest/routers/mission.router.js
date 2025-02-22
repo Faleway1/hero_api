@@ -1,14 +1,14 @@
 import express from "express";
 import { MissionController } from "../controllers/index.controller.js";
 
-const router = express.Router()
+const missionRouter = express.Router()
 
-router.get("/", MissionController.getAllMission);
-router.get("/:id", MissionController.getMissionById);
-router.post("/", MissionController.createMission);
-router.put("/:id", MissionController.updateMission);
-router.delete("/:id", MissionController.deleteMission);
+missionRouter.get("/", MissionController.getAllMission);
+missionRouter.get("/:id", MissionController.getMissionById);
+missionRouter.post("/", MissionController.createMission);
+missionRouter.put("/:id", MissionController.updateMission);
+missionRouter.delete("/:id", MissionController.deleteMission);
 
-router.patch("/:id/restore", MissionController.restoreMission)
+missionRouter.patch("/:id/restore", MissionController.restoreMission)
 
-export default router;
+export default missionRouter;

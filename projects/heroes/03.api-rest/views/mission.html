@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="icon" href="data:;base64,iVBORw0KGgo=" />
+  </head>
+  <body>
+    <nav class="navigation" style="display: flex; flex-direction: row;">
+        <div style="padding-right: 5vw;">
+            <a href="./index.html">Index</a>
+        </div>
+        <div style="padding-right: 5vw;">
+            <a href="./powers.html">Powers</a>
+        </div>
+        <div style="padding-right: 5vw;">
+            <a href="./mission.html">Missions</a>
+        </div>
+    </nav>
+    <div>
+        <h2>Liste des Heros</h2>
+        <ul class="mission_list"></ul>
+    </div>
+    <div>
+        <form action="" method="POST" class="mission_form">
+            <input type="text" name="missionName" placeholder="Nom de la mission" required>
+            <input type="text" name="missionDesc" placeholder="Description de la mission" required>
+            <input type="text" name="missionDifficulty" placeholder="difficulté de la mission" required>
+            <input type="text" name="id_hero" placeholder="id du hero" required>
+            <button type="submit" class="form_submit">Enregistrer</button>
+        </form>
+    </div>
+    <script type="module">
+        const ul = document.querySelector(".mission_list");
+        const form = document.querySelector(".mission_form");
+  
+        async function fetchMissions() {
+          try {
+            const res = await fetch("http://127.0.0.1:3000/api/v1/missions/");
+            const data = await res.json();
+            console.log(data);
+            
+            ul.innerHTML = "";
+            data.forEach((element) => {
+              const li = document.createElement("li");
+              li.textContent = element.missionName +"///"+ element.missionDesc +"///"+ element.missionDifficulty;
+              ul.appendChild(li);
+            });
+          } catch (error) {
+            console.error("Error fetching heroes:", error);
+          }
+        }
+  
+        fetchMissions(); 
+  
+        
+        form.addEventListener("submit", async (event) => {
+          event.preventDefault(); 
+  
+          const formData = new FormData(form);
+          const mission = {
+            missionName: formData.get("missionName"),
+            missionDesc: formData.get("missionDesc"),
+            missionDifficulty: formData.get("missionDifficulty"),
+            id_hero: formData.get("id_hero")
+          };
+  
+          try {
+            const res = await fetch("http://127.0.0.1:3000/api/v1/missions/", {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify(mission),
+            });
+  
+            if (!res.ok) {
+              throw new Error("Failed to add mission");
+            }
+  
+            form.reset();
+            fetchMissions();
+          } catch (error) {
+            console.error("Error submitting mission:", error);
+          }
+        });
+      </script>
+  </body>
+</html>

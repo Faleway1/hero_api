@@ -3,6 +3,7 @@ import sequelize from "./config/database.js";
 import express from "express";
 import heroRouter from "./routers/hero.router.js";
 import powerRouter from "./routers/power.router.js";
+import missionRouter from "./routers/mission.router.js";
 import { logMiddleware } from "./middlewares/log.middleware.js";
 
 import { initializeHeroMock } from "./services/hero.mock.service.js";
@@ -25,7 +26,7 @@ app.use(logMiddleware);
 
 app.use("/api/v1/heroes/", heroRouter);
 app.use("/api/v1/powers/", powerRouter);
-app.use("/api/v1/missions/", powerRouter);
+app.use("/api/v1/missions/", missionRouter);
 
 app.use(errorHandler)
 
